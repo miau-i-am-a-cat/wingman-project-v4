@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wingman Project | Full-Stack Brand Building</title>
+    <meta name="description" content="We build complete brands for creators and companies. Strategy, identity, product, web, photography—everything. Los Angeles.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --dark: #141414;
+            --charcoal: #1a1a1a;
+            --white: #fafafa;
+            --cream: #f5f2ed;
+            --warm: #e8e2d9;
+            --blue: #0066FF;
+            --blue-light: #3d8bff;
+            --muted: #6b6b6b;
+            --subtle: rgba(255,255,255,0.06);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(10,10,10,0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            background: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Placeholder for logo icon */
+        .logo-mark::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: var(--white);
+            clip-path: polygon(50% 0%, 0% 100%, 35% 100%, 50% 60%, 65% 100%, 100% 100%);
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .nav-cta {
+            background: var(--blue);
+            color: var(--white) !important;
+            padding: 12px 24px;
+            opacity: 1 !important;
+            font-weight: 600;
+            transition: background 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--blue-light);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 140px 48px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Video background placeholder */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+        }
+
+        /* Placeholder for video */
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--black) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at center, transparent 0%, var(--black) 70%),
+                linear-gradient(to bottom, transparent 50%, var(--black) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 32px;
+            padding: 10px 20px;
+            border: 1px solid rgba(0,102,255,0.3);
+            background: rgba(0,102,255,0.05);
+        }
+
+        .hero-tag .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--blue);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 7vw, 80px);
+            line-height: 1.05;
+            margin-bottom: 28px;
+            font-weight: 700;
+        }
+
+        .hero h1 .accent {
+            color: var(--blue);
+        }
+
+        .hero-sub {
+            font-size: 19px;
+            color: rgba(255,255,255,0.55);
+            max-width: 580px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: var(--white);
+            padding: 18px 36px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            color: var(--white);
+            padding: 18px 36px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--white);
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header {
+            margin-bottom: 64px;
+        }
+
+        .section-tag {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-tag::before {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--blue);
+        }
+
+        /* ===== WHO WE SERVE ===== */
+        .serve {
+            padding: 140px 48px;
+            background: var(--dark);
+        }
+
+        .serve-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 100px;
+        }
+
+        .serve-intro h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            margin-bottom: 20px;
+        }
+
+        .serve-intro p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .serve-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .serve-card {
+            background: var(--charcoal);
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .serve-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--blue);
+        }
+
+        .serve-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(0,102,255,0.1);
+            border: 1px solid rgba(0,102,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        /* Icon placeholders */
+        .icon-creator {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--blue);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .icon-creator::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 36px;
+            height: 16px;
+            border: 2px solid var(--blue);
+            border-top: none;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .icon-brand {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--blue);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 3px;
+            padding: 3px;
+        }
+
+        .icon-brand span {
+            background: var(--blue);
+        }
+
+        .serve-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 16px;
+        }
+
+        .serve-card h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .serve-card > p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        /* ===== THE DILEMMA ===== */
+        .dilemma {
+            background: rgba(0,102,255,0.03);
+            border: 1px solid rgba(0,102,255,0.1);
+            padding: 40px;
+            margin-top: 20px;
+        }
+
+        .dilemma-title {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dilemma-title .icon {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: var(--blue);
+        }
+
+        .dilemma-question {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 24px;
+            color: var(--white);
+        }
+
+        .dilemma-list {
+            list-style: none;
+        }
+
+        .dilemma-list li {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dilemma-list li:last-child {
+            border-bottom: none;
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        .dilemma-answer {
+            font-weight: 600;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .dilemma-list li:last-child .dilemma-answer {
+            color: var(--blue);
+        }
+
+        /* ===== THE DEAL ===== */
+        .deal {
+            padding: 140px 48px;
+            background: var(--black);
+        }
+
+        .deal-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .deal-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .deal-header h2 {
+            font-size: clamp(36px, 5vw, 56px);
+            margin-bottom: 20px;
+        }
+
+        .deal-header p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.5);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .deal-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: rgba(255,255,255,0.1);
+            margin-bottom: 60px;
+        }
+
+        .deal-stat {
+            background: var(--black);
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .deal-stat-label {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 12px;
+        }
+
+        .deal-stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .deal-explanation {
+            text-align: center;
+            font-size: 17px;
+            color: rgba(255,255,255,0.5);
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== FULL STACK ===== */
+        .fullstack {
+            padding: 140px 48px;
+            background: var(--cream);
+            color: var(--black);
+        }
+
+        .fullstack-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .fullstack-header {
+            max-width: 600px;
+            margin-bottom: 80px;
+        }
+
+        .fullstack .section-tag {
+            color: var(--black);
+        }
+
+        .fullstack .section-tag::before {
+            background: var(--black);
+        }
+
+        .fullstack-header h2 {
+            font-size: clamp(36px, 5vw, 52px);
+            margin-bottom: 20px;
+        }
+
+        .fullstack-header p {
+            font-size: 17px;
+            color: var(--muted);
+        }
+
+        .fullstack-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stack-item {
+            background: var(--white);
+            padding: 36px 28px;
+            border: 1px solid rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .stack-item:hover {
+            border-color: var(--blue);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .stack-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(0,102,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--blue);
+            font-size: 20px;
+        }
+
+        /* Icon placeholder shapes */
+        .stack-icon.strategy::before { content: '◎'; }
+        .stack-icon.identity::before { content: '△'; }
+        .stack-icon.naming::before { content: 'Aa'; font-size: 14px; font-weight: 700; }
+        .stack-icon.packaging::before { content: '☐'; }
+        .stack-icon.web::before { content: '⬡'; }
+        .stack-icon.photo::before { content: '◐'; }
+        .stack-icon.video::before { content: '▷'; }
+        .stack-icon.animation::before { content: '∿'; }
+        .stack-icon.social::before { content: '#'; font-weight: 700; }
+        .stack-icon.copy::before { content: '¶'; }
+        .stack-icon.product::before { content: '◇'; }
+        .stack-icon.logistics::before { content: '→'; }
+
+        .stack-item h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .stack-item p {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ===== LA SECTION ===== */
+        .location {
+            padding: 140px 48px;
+            background: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background image placeholder */
+        .location-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            opacity: 0.15;
+        }
+
+        .location-bg .placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--charcoal), transparent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .location-content {
+            position: relative;
+            z-index: 1;
+            max-width: 650px;
+        }
+
+        .location h2 {
+            font-size: clamp(36px, 5vw, 52px);
+            margin-bottom: 28px;
+            line-height: 1.15;
+        }
+
+        .location h2 .highlight {
+            color: var(--blue);
+        }
+
+        .location > p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+
+        .location-points {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .location-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .point-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0,102,255,0.1);
+            border: 1px solid rgba(0,102,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .point-icon::before {
+            content: '✓';
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        .location-point h4 {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .location-point p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.45);
+        }
+
+        /* ===== PROCESS ===== */
+        .process {
+            padding: 140px 48px;
+            background: var(--black);
+        }
+
+        .process-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .process-header h2 {
+            font-size: clamp(36px, 5vw, 52px);
+            margin-bottom: 16px;
+        }
+
+        .process-header p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 0 16px;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--charcoal);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--blue);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+
+        .process-step:hover .step-number {
+            border-color: var(--blue);
+            background: rgba(0,102,255,0.1);
+        }
+
+        .step-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.6;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            padding: 180px 48px;
+            text-align: center;
+            background: var(--dark);
+            position: relative;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, var(--blue));
+        }
+
+        .cta h2 {
+            font-size: clamp(40px, 6vw, 64px);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .cta > p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.5);
+            max-width: 450px;
+            margin: 0 auto 48px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 60px 48px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            background: var(--black);
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-mark {
+            width: 28px;
+            height: 28px;
+            background: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-mark::before {
+            content: '';
+            width: 14px;
+            height: 14px;
+            background: var(--white);
+            clip-path: polygon(50% 0%, 0% 100%, 35% 100%, 50% 60%, 65% 100%, 100% 100%);
+        }
+
+        .footer-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .footer-location {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-right a {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-right a:hover {
+            color: var(--white);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            nav { padding: 20px 24px; }
+            .hero, .serve, .deal, .fullstack, .location, .process, .cta { padding: 100px 24px; }
+            .serve-grid { grid-template-columns: 1fr; }
+            .fullstack-grid { grid-template-columns: repeat(2, 1fr); }
+            .location-points { grid-template-columns: 1fr; }
+            .process-timeline { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+            .process-timeline::before { display: none; }
+            .deal-stats { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .fullstack-grid { grid-template-columns: 1fr; }
+            .process-timeline { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; gap: 32px; text-align: center; }
+            .footer-left { flex-direction: column; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-mark"></div>
+            <span class="logo-text">The Wingman Project</span>
+        </a>
+        <div class="nav-links">
+            <a href="#creators">For Creators</a>
+            <a href="#brands">For Brands</a>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#contact" class="nav-cta">Start a Project</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-video">
+            <!-- VIDEO PLACEHOLDER: Replace with showreel/brand video -->
+            <div class="video-placeholder">
+                [Video: Brand showreel / LA studio footage / Work montage]
+            </div>
+        </div>
+        <div class="hero-gradient"></div>
+        <div class="hero-content">
+            <div class="hero-tag">
+                <span class="dot"></span>
+                Los Angeles, California
+            </div>
+            <h1>
+                Full-stack<br>
+                <span class="accent">brand building.</span>
+            </h1>
+            <p class="hero-sub">
+                Strategy. Identity. Product. Web. Photography. Everything your brand needs to exist—built by one team, under one roof.
+            </p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn-primary">Start a Project</a>
+                <a href="#capabilities" class="btn-ghost">See Capabilities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Serve -->
+    <section class="serve" id="creators">
+        <div class="serve-intro">
+            <h2>Two paths. Same obsession with craft.</h2>
+            <p>Whether you're a creator ready to build a brand or a company ready to build it right, we bring the same thing: everything you need, nothing you don't.</p>
+        </div>
+
+        <div class="serve-grid">
+            <!-- Creators -->
+            <div class="serve-card" id="creators">
+                <div class="serve-icon">
+                    <div class="icon-creator"></div>
+                </div>
+                <div class="serve-label">For Creators</div>
+                <h3>You create. We build.</h3>
+                <p>You've built an audience. Now you want to build a brand. But every hour spent on websites, products, and logistics is an hour away from what made you successful.</p>
+                
+                <div class="dilemma">
+                    <div class="dilemma-title">
+                        <span class="icon">?</span>
+                        The Influencer's Dilemma
+                    </div>
+                    <p class="dilemma-question">What is your job?</p>
+                    <ul class="dilemma-list">
+                        <li>Web development? <span class="dilemma-answer">No.</span></li>
+                        <li>Brand strategy? <span class="dilemma-answer">No.</span></li>
+                        <li>Product manufacturing? <span class="dilemma-answer">No.</span></li>
+                        <li>Supply chain logistics? <span class="dilemma-answer">No.</span></li>
+                        <li>Being you? <span class="dilemma-answer">Yes.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Brands -->
+            <div class="serve-card" id="brands">
+                <div class="serve-icon">
+                    <div class="icon-brand">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="serve-label">For Brands</div>
+                <h3>You build products. We build everything else.</h3>
+                <p>You know your product. You know your customers. But every week spent managing agencies, coordinating vendors, and chasing assets is a week away from what actually matters.</p>
+                
+                <div class="dilemma">
+                    <div class="dilemma-title">
+                        <span class="icon">?</span>
+                        The Opportunity Cost
+                    </div>
+                    <p class="dilemma-question">Where should your energy go?</p>
+                    <ul class="dilemma-list">
+                        <li>Coordinating five agencies? <span class="dilemma-answer">No.</span></li>
+                        <li>Chasing deliverables? <span class="dilemma-answer">No.</span></li>
+                        <li>Managing creative timelines? <span class="dilemma-answer">No.</span></li>
+                        <li>Reviewing endless revisions? <span class="dilemma-answer">No.</span></li>
+                        <li>Building better products? <span class="dilemma-answer">Yes.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Deal -->
+    <section class="deal">
+        <div class="deal-container">
+            <div class="deal-header">
+                <div class="section-tag"><span>The Deal</span></div>
+                <h2>Alignment, not invoices.</h2>
+                <p>For select creator partnerships, we invest in your success instead of billing for our time.</p>
+            </div>
+            
+            <div class="deal-stats">
+                <div class="deal-stat">
+                    <div class="deal-stat-label">Retainers</div>
+                    <div class="deal-stat-value">Zero</div>
+                </div>
+                <div class="deal-stat">
+                    <div class="deal-stat-label">Commissions</div>
+                    <div class="deal-stat-value">Zero</div>
+                </div>
+                <div class="deal-stat">
+                    <div class="deal-stat-label">Fees</div>
+                    <div class="deal-stat-value">Zero</div>
+                </div>
+            </div>
+            
+            <p class="deal-explanation">
+                We make money when you make money. That's the only alignment that actually works. No hidden costs, no surprise invoices, no "additional scope" conversations.
+            </p>
+        </div>
+    </section>
+
+    <!-- Full Stack -->
+    <section class="fullstack" id="capabilities">
+        <div class="fullstack-container">
+            <div class="fullstack-header">
+                <div class="section-tag"><span>Capabilities</span></div>
+                <h2>Everything. Literally.</h2>
+                <p>Not an agency with a Rolodex of contractors. A solutions team with every discipline in-house. One team, one vision, one standard.</p>
+            </div>
+            
+            <div class="fullstack-grid">
+                <div class="stack-item">
+                    <div class="stack-icon strategy"></div>
+                    <h4>Brand Strategy</h4>
+                    <p>Positioning, audience, competitive landscape. The thinking that makes everything else work.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon identity"></div>
+                    <h4>Visual Identity</h4>
+                    <p>Logo, color, typography, guidelines. A complete visual system, not just a logo file.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon naming"></div>
+                    <h4>Naming & Verbal</h4>
+                    <p>Brand name, tagline, voice. Words that capture who you are and stick in minds.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon packaging"></div>
+                    <h4>Packaging Design</h4>
+                    <p>Structural design, print production, material sourcing. Shelf presence that sells.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon web"></div>
+                    <h4>Web Development</h4>
+                    <p>Custom e-commerce, marketing sites, landing pages. Built to convert, designed to impress.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon photo"></div>
+                    <h4>Photography</h4>
+                    <p>Product, lifestyle, campaign. Studio and location shoots that make your brand tangible.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon video"></div>
+                    <h4>Video Production</h4>
+                    <p>Brand films, product videos, social content. Motion that moves people.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon animation"></div>
+                    <h4>Motion & Animation</h4>
+                    <p>Animated logos, explainers, UI motion. Movement that adds meaning.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon social"></div>
+                    <h4>Social & Content</h4>
+                    <p>Templates, content systems, asset libraries. Everything you need to show up consistently.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon copy"></div>
+                    <h4>Copywriting</h4>
+                    <p>Website copy, product descriptions, campaign messaging. Words that sell without feeling like sales.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon product"></div>
+                    <h4>Product Development</h4>
+                    <p>Formulation, sourcing, manufacturing coordination. From concept to physical product.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon logistics"></div>
+                    <h4>Fulfillment & Logistics</h4>
+                    <p>Warehousing, shipping, inventory. The unglamorous stuff that makes businesses work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section class="location">
+        <div class="location-bg">
+            <!-- IMAGE PLACEHOLDER: LA skyline or studio shot -->
+            <div class="placeholder">[Image: LA Studio / Skyline]</div>
+        </div>
+        <div class="location-content">
+            <div class="section-tag"><span>Los Angeles</span></div>
+            <h2>World-class talent.<br><span class="highlight">All in-house.</span></h2>
+            <p>
+                We don't outsource. We don't subcontract. Every strategist, designer, developer, photographer, and producer works together in Los Angeles. One team, one standard, one obsession with getting it right.
+            </p>
+            <div class="location-points">
+                <div class="location-point">
+                    <div class="point-icon"></div>
+                    <div>
+                        <h4>No subcontracting</h4>
+                        <p>Every discipline under one roof</p>
+                    </div>
+                </div>
+                <div class="location-point">
+                    <div class="point-icon"></div>
+                    <div>
+                        <h4>Senior talent only</h4>
+                        <p>No juniors learning on your project</p>
+                    </div>
+                </div>
+                <div class="location-point">
+                    <div class="point-icon"></div>
+                    <div>
+                        <h4>Direct collaboration</h4>
+                        <p>You talk to the people doing the work</p>
+                    </div>
+                </div>
+                <div class="location-point">
+                    <div class="point-icon"></div>
+                    <div>
+                        <h4>Quality obsessed</h4>
+                        <p>We'd rather say no than do it wrong</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process">
+        <div class="process-container">
+            <div class="process-header">
+                <div class="section-tag"><span>Process</span></div>
+                <h2>From conversation to launch.</h2>
+                <p>No strategy decks that gather dust. No phase one that never becomes phase two. Real work, real outcomes.</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-title">Discovery</div>
+                    <div class="step-desc">Deep dive into who you are, who you serve, and what you're building toward.</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-title">Strategy</div>
+                    <div class="step-desc">Positioning, architecture, and the plan that makes everything else make sense.</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-title">Design</div>
+                    <div class="step-desc">Identity, digital, packaging—the visual world your brand lives in.</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-title">Production</div>
+                    <div class="step-desc">Photography, video, web development. Making it real and ready.</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <div class="step-title">Launch</div>
+                    <div class="step-desc">Everything connected, tested, and live. You're in business.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contact">
+        <h2>Ready to build?</h2>
+        <p>We're selective about who we work with. If there's a fit, we move fast.</p>
+        <div class="cta-buttons">
+            <a href="mailto:hello@thewingmanproject.com" class="btn-primary">Start a Conversation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-brand">
+                    <div class="footer-mark"></div>
+                    <span class="footer-name">The Wingman Project</span>
+                </div>
+                <span class="footer-location">Los Angeles, California</span>
+            </div>
+            <div class="footer-right">
+                <a href="mailto:hello@thewingmanproject.com">Contact</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
